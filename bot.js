@@ -29,7 +29,10 @@ const pool = new Pool({
 		    console.log(new_call);
 		    if(!call_list){
 		    	console.log('none found');
-		    	call_list = new Array(new_call);
+		    	call_list = [];
+		    	call_list.push(new_call);
+		    	console.log(call_list);
+
 		    }
 		    else{
 		    	console.log('found it');
