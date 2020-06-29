@@ -5,15 +5,15 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`)
 })
 client.on("message", msg => {
-	if (!message.content.startsWith("!") || message.author.bot) return;
+	if (!msg.content.startsWith("!") || msg.author.bot) return;
 
-	const args = message.content.slice(prefix.length).split(/ +/);
+	const args = msg.content.slice(1).split(/ +/);
 	const command = args.shift().toLowerCase();
 
 	if (command === 'ping') {
-		message.channel.send('Pong.');
+		msg.channel.send('Pong.');
 	} else if (command === 'beep') {
-		message.channel.send('Boop.');
+		msg.channel.send('Boop.');
 	}
 	// other commands...
 
