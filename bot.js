@@ -39,7 +39,7 @@ const pool = new Pool({
 		  client.query(insertText, [ 2353425342345, JSON.stringify([1234, 'asdfasdf'])]);
 		  release()
 
-		})
+		}) 
 
 
 client.on("ready", () => {
