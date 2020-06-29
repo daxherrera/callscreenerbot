@@ -1,24 +1,21 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
 
-class Caller:
-  def __init__(self, name, topic):
-    self.name = name
-    self.topic = age
-    self.time = time.time()
-
-
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`)
 })
 client.on("message", msg => {
-  if (msg.content === "maddox") {
-    msg.reply("Lost!")
-  }
-  if (msg.content === "!call ") {
-    print time.time()
-    
-  }
+	if (!message.content.startsWith("!") || message.author.bot) return;
+
+	const args = message.content.slice(prefix.length).split(/ +/);
+	const command = args.shift().toLowerCase();
+
+	if (command === 'ping') {
+		message.channel.send('Pong.');
+	} else if (command === 'beep') {
+		message.channel.send('Boop.');
+	}
+	// other commands...
 
 })
 client.login(process.env.BOT_TOKEN);
