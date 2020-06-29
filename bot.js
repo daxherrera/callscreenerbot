@@ -12,6 +12,18 @@ const pool = new Pool({
   }
 });
 
+	    try {
+			pool.connect(process.env.DATABASE_URL, function(err, client, done) {
+			  client.query('SELECT * FROM call_lists', function(err, result) {
+			    done();
+			    if(err) return console.error(err);
+			    console.log(result.rows);
+			  });
+			});
+	    } catch (err) {
+	      console.error(err);
+	    }
+
 client.on("ready", () => {
   
   console.log('ne');
@@ -35,7 +47,7 @@ client.on("message", msg => {
 		msg.channel.send('Boop.');
 	} else if(command === 'call'){
 	    try {
-			pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+			pool.connect(process.env.DATABASE_URL, function(err, client, done) {
 			  client.query('SELECT * FROM call_lists', function(err, result) {
 			    done();
 			    if(err) return console.error(err);
