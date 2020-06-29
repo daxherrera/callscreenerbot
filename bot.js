@@ -54,10 +54,11 @@ pool.connect((err, client, release) => {
 		    }
 		    call_list = result.rows[0];
 		    console.log(call_list)
+		    var new_call = {user: "test", message:"message"};
 		    if(!call_list)
-		    	call_list[] = {user: "test", message:"message"};
+		    	call_list[] = new_call;
 		    else
-		    	call_list.push({user: "test", message:"message"});
+		    	call_list.push(new_call);
 		    console.log(call_list)
 		  })
 		  client.query('INSERT INTO call_list(guild, data) VALUES($1, $2)', server, [call_list]);
