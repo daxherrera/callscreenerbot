@@ -13,8 +13,8 @@ client.on("message", msg => {
 	const args = msg.content.slice(1).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	var guild_id = bot.guilds.get(message.author).id
-	console.log(guild_id);
+	var server = message.guild.id;
+	console.log(server);
 	if (command === 'ping') {
 		msg.channel.send('Pong.');
 	} else if (command === 'beep') {
