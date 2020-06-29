@@ -3,6 +3,8 @@ const client = new Discord.Client()
 
 
 const { Pool } = require('pg');
+var pg = require('pg');
+console.log(process.env.DATABASE_URL);
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -33,11 +35,13 @@ client.on("message", msg => {
 		msg.channel.send('Boop.');
 	} else if(command === 'call'){
 	    try {
-	      const client = pool.connect();
-	      const result = client.query('SELECT * FROM call_lists');
-	      const results = { 'results': (result) ? result.rows : null};
-	      console.log(results);
-	      client.release();
+			pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+			  client.query('SELECT * FROM call_lists', function(err, result) {
+			    done();
+			    if(err) return console.error(err);
+			    console.log(result.rows);
+			  });
+			});
 	    } catch (err) {
 	      console.error(err);
 	    }
