@@ -35,7 +35,8 @@ const pool = new Pool({
 		  
 		  console.log(call_list)
 
-		  client.query('INSERT INTO call_lists(guild, data) VALUES($1, $2)', [ 1234, 'asdfasdf' ] );
+		  const insertText = 'INSERT INTO call_lists(guild, data) VALUES($1, $2)';
+		  client.query(insertText, [ 2353425342345, JSON.stringify([1234, 'asdfasdf'])]);
 		  release()
 
 		})
