@@ -3,7 +3,10 @@ const client = new Discord.Client()
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`)
+  puts bot.guilds
+
 })
+
 client.on("message", msg => {
 	if (!msg.content.startsWith("!") || msg.author.bot) return;
 
