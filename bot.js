@@ -11,14 +11,12 @@ const pool = new Pool({
 });
 
     try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
+      const client = pool.connect();
+      const result = client.query('SELECT * FROM call_lists');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
       client.release();
     } catch (err) {
       console.error(err);
-      res.send("Error " + err);
     }
 
 
