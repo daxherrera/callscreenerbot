@@ -15,16 +15,6 @@ client.on("ready", () => {
   console.log('ne');
   console.log(`Logged in as ${client.user.tag}!`);
 
-    try {
-      const client = pool.connect();
-      const result = client.query('SELECT * FROM call_lists');
-      const results = { 'results': (result) ? result.rows : null};
-      console.log(results);
-      client.release();
-    } catch (err) {
-      console.error(err);
-    }
-
 })
 
 
@@ -41,6 +31,17 @@ client.on("message", msg => {
 		msg.channel.send('Pong.');
 	} else if (command === 'beep') {
 		msg.channel.send('Boop.');
+	} else if(comment === 'call'){
+	    try {
+	      const client = pool.connect();
+	      const result = client.query('SELECT * FROM call_lists');
+	      const results = { 'results': (result) ? result.rows : null};
+	      console.log(results);
+	      client.release();
+	    } catch (err) {
+	      console.error(err);
+	    }
+		
 	}
 	// other commands...
 
