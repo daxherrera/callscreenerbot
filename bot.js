@@ -31,7 +31,7 @@ const pool = new Pool({
 		    else
 		    	call_list.push(new_call);
 
-		  })
+		  }) 
 		  
 		  console.log(call_list)
 
