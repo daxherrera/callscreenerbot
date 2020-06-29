@@ -31,7 +31,7 @@ client.on("message", msg => {
 		msg.channel.send('Pong.');
 	} else if (command === 'beep') {
 		msg.channel.send('Boop.');
-	} else if(comment === 'call'){
+	} else if(command === 'call'){
 	    try {
 	      const client = pool.connect();
 	      const result = client.query('SELECT * FROM call_lists');
@@ -41,7 +41,7 @@ client.on("message", msg => {
 	    } catch (err) {
 	      console.error(err);
 	    }
-		
+
 	}
 	// other commands...
 
