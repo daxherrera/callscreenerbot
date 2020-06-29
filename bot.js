@@ -56,7 +56,7 @@ pool.connect((err, client, release) => {
 		    console.log(call_list)
 		    var new_call = {user: "test", message:"message"};
 		    if(!call_list)
-		    	call_list[] = new_call;
+		    	call_list = new Array(new_call);
 		    else
 		    	call_list.push(new_call);
 		    console.log(call_list)
