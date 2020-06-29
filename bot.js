@@ -11,7 +11,9 @@ const pool = new Pool({
 });
 
     try {
+      console.log(pool);
       const client = pool.connect();
+      console.log(client);
       const result = client.query('SELECT * FROM call_lists');
       const results = { 'results': (result) ? result.rows : null};
       client.release();
