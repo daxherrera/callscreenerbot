@@ -14,16 +14,11 @@ client.on("ready", () => {
   console.log('ne');
   console.log(`Logged in as ${client.user.tag}!`);
 
-    try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM call_lists');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
 
 })
 
