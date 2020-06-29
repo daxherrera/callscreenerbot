@@ -22,12 +22,11 @@ const pool = new Pool({
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    call_list = result.rows[0];
 		    console.log(result.rows);
 		    console.log(call_list)
 		    var new_call = {user: "test", message:"message"};
 		    console.log(new_call);
-		    if(!call_list){
+		    if(!result.rows[0]){
 		    	console.log('none found');
 		    	call_list = [];
 		    	call_list.push(new_call);
@@ -37,8 +36,9 @@ const pool = new Pool({
 
 		    }
 		    else{
+			    call_list = result.rows[0].data;
 		    	console.log('found it');
-		    	console.log(call_list.data);
+		    	console.log(call_list);
 		    	call_list.push(new_call);
 				console.log(call_list)  
 		    }
