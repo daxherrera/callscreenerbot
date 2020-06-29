@@ -38,6 +38,24 @@ pool.connect((err, client, release) => {
 })
 
 
+
+		pool.connect((err, client, release) => {
+		  if (err) {
+		    return console.error('Error acquiring client', err.stack)
+		  }
+		  var server = 727072362750804048;
+		  var query = `SELECT * FROM call_lists WHERE guild = '${server}' LIMIT 1`;
+		  console.log(query);
+		  client.query(query, (err, result) => {
+		    release()
+		    if (err) {
+		      return console.error('Error executing query', err.stack)
+		    }
+		    console.log(result.rows)
+		  })
+		})
+
+
 client.on("ready", () => {
   console.log('ne');
   console.log(`Logged in as ${client.user.tag}!`);
@@ -58,21 +76,6 @@ client.on("message", msg => {
 		msg.channel.send('Lost');
 	} else if(command === 'call'){
 
-
-		pool.connect((err, client, release) => {
-		  if (err) {
-		    return console.error('Error acquiring client', err.stack)
-		  }
-		  var query = 'SELECT * FROM call_lists WHERE guild = \'' + server+'\'' LIMIT 1';
-		  console.log(query);
-		  client.query(query, (err, result) => {
-		    release()
-		    if (err) {
-		      return console.error('Error executing query', err.stack)
-		    }
-		    console.log(result.rows)
-		  })
-		})
 
 	}
 	// other commands...
