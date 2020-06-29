@@ -33,7 +33,7 @@ const pool = new Pool({
 		    }
 		    else{
 		    	console.log('found it');
-		    	console.log(call_list);
+		    	console.log(call_list.data);
 		    	call_list.push(new_call);
 		    }
 
