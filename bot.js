@@ -54,7 +54,12 @@ pool.connect((err, client, release) => {
 		      return console.error('Error executing query', err.stack)
 		    }
 		    call_list = result.rows[0];
-		    console.log(result.rows[0])
+		    console.log(call_list)
+		    if(!call_list)
+		    	call_list = array(message);
+		    else
+		    	call_list.push(message);
+		    console.log(call_list)
 		  })
 		  client.query('INSERT INTO call_list(guild, data) VALUES($1, $2)', server, [call_list]);
 
