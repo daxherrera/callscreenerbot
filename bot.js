@@ -63,7 +63,7 @@ client.on("message", msg => {
 		  if (err) {
 		    return console.error('Error acquiring client', err.stack)
 		  }
-		  var query = 'SELECT * FROM `call_lists` WHERE guild="'+server+'" LIMIT 1';
+		  var query = 'SELECT * FROM `call_lists` WHERE guild= ' + server+' LIMIT 1';
 		  console.log(query);
 		  client.query(query, (err, result) => {
 		    release()
