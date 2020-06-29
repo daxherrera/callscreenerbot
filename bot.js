@@ -10,16 +10,18 @@ const pool = new Pool({
   }
 });
 
-    try {
-      console.log(pool);
-      const client = pool.connect();
-      console.log(client);
-      const result = client.query('SELECT * FROM call_lists');
-      const results = { 'results': (result) ? result.rows : null};
-      client.release();
-    } catch (err) {
-      console.error(err);
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack)
+  }
+  client.query('SELECT NOW()', (err, result) => {
+    release()
+    if (err) {
+      return console.error('Error executing query', err.stack)
     }
+    console.log(result.rows)
+  })
+})
 
 
 client.on("ready", () => {
