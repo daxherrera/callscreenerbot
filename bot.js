@@ -1,8 +1,6 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
 
-import time from time;
-
 class Caller:
   def __init__(self, name, topic):
     self.name = name
