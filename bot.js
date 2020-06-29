@@ -1,12 +1,6 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
 
-client.on("ready", () => {
-  
-  console.log('ne');
-  console.log(`Logged in as ${client.user.tag}!`);
-})
-
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -14,10 +8,15 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-.get('/db', async (req, res) => {
+
+client.on("ready", () => {
+  
+  console.log('ne');
+  console.log(`Logged in as ${client.user.tag}!`);
+
     try {
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
+      const result = await client.query('SELECT * FROM call_lists');
       const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
@@ -25,7 +24,10 @@ const pool = new Pool({
       console.error(err);
       res.send("Error " + err);
     }
-  })
+
+})
+
+
 
 client.on("message", msg => {
 	if (!msg.content.startsWith("!") || msg.author.bot) return;
