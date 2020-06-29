@@ -33,7 +33,7 @@ pool.connect((err, client, release) => {
     if (err) {
       return console.error('Error executing query', err.stack)
     }
-    console.log(result)
+    console.log(result.rows)
   })
 })
 
