@@ -13,7 +13,7 @@ client.on("message", msg => {
 	const args = msg.content.slice(1).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	var server = message.guild.id;
+	var server = msg.guild.id;
 	console.log(server);
 	if (command === 'ping') {
 		msg.channel.send('Pong.');
