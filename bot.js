@@ -21,6 +21,13 @@ pool.connect((err, client, release) => {
     }
     console.log(result.rows)
   })
+})
+
+
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack)
+  }
   client.query('SELECT * FROM call_lists', (err, result) => {
     release()
     if (err) {
