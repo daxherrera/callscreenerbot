@@ -2,15 +2,19 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 
 
+var pool = new pg.Pool()
 var pg = require('pg');
 
-pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+pool.connect(function(err, client, done) {
    client.query('SELECT * FROM your_table', function(err, result) {
       done();
       if(err) return console.error(err);
       console.log(result.rows);
    });
-});
+})
+
+pool.end()
+
 
 client.on("ready", () => {
   console.log('ne');
