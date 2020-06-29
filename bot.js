@@ -9,46 +9,16 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-
-pool.connect((err, client, release) => {
-  if (err) {
-    return console.error('Error acquiring client', err.stack)
-  }
-  client.query('SELECT NOW()', (err, result) => {
-    release()
-    if (err) {
-      return console.error('Error executing query', err.stack)
-    }
-    console.log(result.rows)
-  })
-})
-
-
-pool.connect((err, client, release) => {
-  if (err) {
-    return console.error('Error acquiring client', err.stack)
-  }
-  client.query('SELECT * FROM call_lists', (err, result) => {
-    release()
-    if (err) {
-      return console.error('Error executing query', err.stack)
-    }
-    console.log(result.rows)
-  })
-})
-
-
-
 		pool.connect((err, client, release) => {
 		  if (err) {
 		    return console.error('Error acquiring client', err.stack)
 		  }
+
 		  var server = 727072362750804048;
 		  var query = `SELECT data FROM call_lists WHERE guild = ${server} LIMIT 1`;
 		  console.log(query);
 		  var call_list = '';
 		  client.query(query, (err, result) => {
-		    release()
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
@@ -63,7 +33,8 @@ pool.connect((err, client, release) => {
 
 		    console.log(call_list)
 		  })
-		  client.query('INSERT INTO call_list(guild, data) VALUES($1, $2)', server, [call_list]);
+		  //client.query('INSERT INTO call_list(guild, data) VALUES($1, $2)', server, [call_list]);
+		  release()
 
 		})
 
