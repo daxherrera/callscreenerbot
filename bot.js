@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
 
+
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -14,11 +15,16 @@ client.on("ready", () => {
   console.log('ne');
   console.log(`Logged in as ${client.user.tag}!`);
 
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM call_lists');
+    try {
+      const client = pool.connect();
+      const result = client.query('SELECT * FROM call_lists');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
+      console.log(results);
       client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
 
 })
 
