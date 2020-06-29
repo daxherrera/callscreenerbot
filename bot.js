@@ -54,11 +54,26 @@ client.on("message", msg => {
 
 	var server = msg.guild.id;
 	console.log(server);
-	if (command === 'ping') {
-		msg.channel.send('Pong.');
-	} else if (command === 'beep') {
-		msg.channel.send('Boop.');
+	if (command === 'maddox') {
+		msg.channel.send('Lost');
 	} else if(command === 'call'){
+
+
+		pool.connect((err, client, release) => {
+		  if (err) {
+		    return console.error('Error acquiring client', err.stack)
+		  }
+		  var query = 'SELECT * FROM call_lists WHERE guild="'+server+'"';
+		  console.log(query);
+		  client.query(query, (err, result) => {
+		    release()
+		    if (err) {
+		      return console.error('Error executing query', err.stack)
+		    }
+		    console.log(result.rows)
+		  })
+		})
+
 	}
 	// other commands...
 
