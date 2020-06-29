@@ -41,6 +41,10 @@ const pool = new Pool({
 		    	console.log(call_list);
 		    	call_list.push(new_call);
 				console.log(call_list)  
+
+				const insertText = 'UPDATE call_lists SET data = $2 WHERE guild=$1';
+				client.query(insertText, [ server, JSON.stringify(call_list)]);
+
 		    }
 
 
