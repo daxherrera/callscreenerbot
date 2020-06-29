@@ -23,7 +23,7 @@ const pool = new Pool({
 		      return console.error('Error executing query', err.stack)
 		    }
 		    call_list = result.rows[0];
-		    console.log(result);
+		    console.log(result.rows);
 		    console.log(call_list)
 		    var new_call = {user: "test", message:"message"};
 		    console.log(new_call);
@@ -37,10 +37,10 @@ const pool = new Pool({
 		    	call_list.push(new_call);
 		    }
 
-			  console.log(call_list)
+			console.log(call_list)
 
-			  const insertText = 'INSERT INTO call_lists(guild, data) VALUES($1, $2)';
-			  client.query(insertText, [ 727072362750804048, JSON.stringify(call_list)]);
+			const insertText = 'INSERT INTO call_lists(guild, data) VALUES($1, $2)';
+			client.query(insertText, [ server, JSON.stringify(call_list)]);
 
 		  }) 
 		  
