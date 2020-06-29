@@ -45,7 +45,7 @@ pool.connect((err, client, release) => {
 		  }
 		  message = "boing";
 		  var server = 727072362750804048;
-		  var query = `SELECT list FROM call_lists WHERE guild = ${server} LIMIT 1`;
+		  var query = `SELECT data FROM call_lists WHERE guild = ${server} LIMIT 1`;
 		  console.log(query);
 		  var call_list = '';
 		  client.query(query, (err, result) => {
