@@ -43,7 +43,6 @@ pool.connect((err, client, release) => {
 		  if (err) {
 		    return console.error('Error acquiring client', err.stack)
 		  }
-		  message = "boing";
 		  var server = 727072362750804048;
 		  var query = `SELECT data FROM call_lists WHERE guild = ${server} LIMIT 1`;
 		  console.log(query);
@@ -56,9 +55,9 @@ pool.connect((err, client, release) => {
 		    call_list = result.rows[0];
 		    console.log(call_list)
 		    if(!call_list)
-		    	var call_list = array(message);
+		    	call_list[] = {user: "test", message:"message"};
 		    else
-		    	call_list.push(message);
+		    	call_list.push({user: "test", message:"message"});
 		    console.log(call_list)
 		  })
 		  client.query('INSERT INTO call_list(guild, data) VALUES($1, $2)', server, [call_list]);
