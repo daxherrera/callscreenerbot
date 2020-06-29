@@ -2,8 +2,8 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 
 
-var pool = new pg.Pool()
 var pg = require('pg');
+var pool = new pg.Pool()
 
 pool.connect(function(err, client, done) {
    client.query('SELECT * FROM your_table', function(err, result) {
