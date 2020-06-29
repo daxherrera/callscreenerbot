@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 
 client.on("ready", () => {
+  
   console.log('ne');
   console.log(`Logged in as ${client.user.tag}!`);
 })
@@ -12,6 +13,8 @@ client.on("message", msg => {
 	const args = msg.content.slice(1).split(/ +/);
 	const command = args.shift().toLowerCase();
 
+	var guild_id = bot.guilds.get(message.author).id
+	console.log(guild_id);
 	if (command === 'ping') {
 		msg.channel.send('Pong.');
 	} else if (command === 'beep') {
