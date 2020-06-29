@@ -31,9 +31,9 @@ const pool = new Pool({
 		    else
 		    	call_list.push(new_call);
 
-		    console.log(call_list)
 		  })
 		  
+		  console.log(call_list)
 
 		  client.query('INSERT INTO call_lists(guild, data) VALUES($1, $2)', [ server, call_list ] );
 		  release()
