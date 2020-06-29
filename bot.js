@@ -7,6 +7,14 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 })
 
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
 client.on("message", msg => {
 	if (!msg.content.startsWith("!") || msg.author.bot) return;
 
