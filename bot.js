@@ -42,12 +42,14 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-			call_list = result.rows[0].data;
-		    console.log(call_list);
-		    for (i = 0; i < call_list.length; i++) { 
-		        console.log(call_list[i]);
-				msg.channel.send(call_list[i].user_name + ": " + call_list[i].user_message);
-		    }
+		    if(result.rows > 0){
+				call_list = result.rows[0].data;
+			    console.log(call_list);
+			    for (i = 0; i < call_list.length; i++) { 
+			        console.log(call_list[i]);
+					msg.channel.send(call_list[i].user_name + ": " + call_list[i].user_message);
+			    }
+			}
 		  })
 
 		release()
