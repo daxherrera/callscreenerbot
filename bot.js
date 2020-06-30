@@ -25,16 +25,11 @@ client.on("message", msg => {
 	const command = args.shift().toLowerCase();
 
 	var server = msg.guild.id;
-	console.log(server);
-	console.log(msg.member.id);
 	if (command === 'maddox') {
 		msg.channel.send('Lost');
 	} else if(command === 'call'){
 
-		console.log("1234");		
-		console.log(msg.author);
-		console.log("5678");		
-		console.log(args);
+		var reason = const command = args.shift();
 
 		pool.connect((err, client, release) => {
 		  if (err) {
@@ -50,7 +45,7 @@ client.on("message", msg => {
 		    }
 		    console.log(result.rows);
 		    console.log(call_list)
-		    var new_call = {user_name: msg.member.name, user_id: msg.member.id, user_message :"message"};
+		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason};
 		    console.log(new_call);
 		    if(!result.rows[0]){
 		    	console.log('none found');
