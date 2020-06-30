@@ -29,7 +29,7 @@ client.on("message", msg => {
 		msg.channel.send('Lost');
 	} else if(command === 'call'){
 
-		var reason = args.shift();
+		var reason = args.join(" ");
 
 		pool.connect((err, client, release) => {
 		  if (err) {
@@ -54,11 +54,8 @@ client.on("message", msg => {
 
 		    }
 		    else{
-		    	console.log(args.join(" "));
 			    call_list = result.rows[0].data;
 		    	console.log('found it');
-		    	console.log(reason);
-		    	console.log(call_list);
 		    	call_list.push(new_call);
 				console.log(call_list)  
 
