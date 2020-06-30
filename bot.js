@@ -59,6 +59,7 @@ client.on("message", msg => {
 		    else{
 			    call_list = result.rows[0].data;
 		    	console.log('found it');
+		    	console.log(reason);
 		    	console.log(call_list);
 		    	call_list.push(new_call);
 				console.log(call_list)  
