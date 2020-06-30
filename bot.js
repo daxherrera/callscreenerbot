@@ -42,7 +42,7 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    if(result.rows.length() > 0){
+		    if(result.rows.length > 0){
 				call_list = result.rows[0].data;
 			    console.log(call_list);
 			    for (i = 0; i < call_list.length; i++) { 
