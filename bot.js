@@ -73,7 +73,7 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    var nowtime = Date.now().toLocaleString();
+		    var nowtime = Date.toLocaleString();
 		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : nowtime};
 		    //console.log(new_call);
 		    console.log("result.rows");
