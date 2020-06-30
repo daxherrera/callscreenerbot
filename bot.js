@@ -27,13 +27,12 @@ client.on("message", msg => {
 	var server = msg.guild.id;
 	console.log(server);
 	console.log(msg.member.id);
-	console.log(msg.member);
 	if (command === 'maddox') {
 		msg.channel.send('Lost');
 	} else if(command === 'call'){
 
 		console.log("1234");		
-		console.log(msg.member.user);
+		console.log(msg.author);
 		console.log("5678");		
 		console.log(args);
 
