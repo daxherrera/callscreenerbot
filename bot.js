@@ -89,7 +89,7 @@ client.on("message", msg => {
 		    }
 		    else{
 			    call_list = result.rows[0].data;
-		    	console.log('found it');
+		    	console.log('some found');
 
 		        for (i = 0; i < call_list.length; i++) { 
 		            console.log(call_list[i]);
