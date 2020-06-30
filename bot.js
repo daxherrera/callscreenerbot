@@ -44,9 +44,10 @@ client.on("message", msg => {
 		        console.log(call_list[i]);
 				msg.channel.send(call_list[i]);
 		    }
-
 		})
+
 		release()
+		})
 
 	} else if(command === 'call'){
 
