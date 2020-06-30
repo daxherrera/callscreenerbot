@@ -37,14 +37,11 @@ client.on("message", msg => {
 		  }
 
 		  var query = `SELECT data FROM call_lists WHERE guild = ${server} LIMIT 1`;
-		  console.log(query);
 		  var call_list = '';
 		  client.query(query, (err, result) => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    console.log(result.rows);
-		    console.log(call_list)
 		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason};
 		    console.log(new_call);
 		    if(!result.rows[0]){
@@ -57,6 +54,7 @@ client.on("message", msg => {
 
 		    }
 		    else{
+		    	console.log(args.join(" "));
 			    call_list = result.rows[0].data;
 		    	console.log('found it');
 		    	console.log(reason);
