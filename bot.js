@@ -60,7 +60,9 @@ client.on("message", msg => {
 				console.log(call_list)  
 
 		        for (i = 0; i < call_list.length; i++) { 
-		            console.log(call_list[i]); 
+		            console.log(call_list[i]);
+		            if(call_list[i].user_id == msg.author.id)
+		              console.log('FOUN USER'); 
 		        } 
 
 
