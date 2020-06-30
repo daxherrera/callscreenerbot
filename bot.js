@@ -16,7 +16,7 @@ client.on("ready", () => {
 
 })
 
-		    var nowtime = Date.toLocaleString();
+		    var nowtime = new Date.toLocaleString();
 		    console.log(nowtime);
 
 
