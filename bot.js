@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
 
-var dateFormat = require('dateformat');
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -74,10 +73,8 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    var nowtime = Date.now();
-		    var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-
-		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : day};
+		    var nowtime = Date.now().toLocaleString();
+		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : reason};
 		    //console.log(new_call);
 		    console.log("result.rows");
 		    console.log(result.rows.length);
