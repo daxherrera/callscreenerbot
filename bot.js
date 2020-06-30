@@ -46,7 +46,7 @@ client.on("message", msg => {
 		    console.log(call_list);
 		    for (i = 0; i < call_list.length; i++) { 
 		        console.log(call_list[i]);
-				msg.channel.send(call_list[i].user_name + " " + call_list[i].user_message);
+				msg.channel.send(call_list[i].user_name + ": " + call_list[i].user_message);
 		    }
 		  })
 
@@ -76,6 +76,7 @@ client.on("message", msg => {
 		    	call_list.push(new_call);
 		    	console.log(call_list);
 				const insertText = 'INSERT INTO call_lists(guild, data) VALUES($1, $2)';
+				console.log(insertText);
 				client.query(insertText, [ server, JSON.stringify(call_list)]);
 
 		    }
