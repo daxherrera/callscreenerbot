@@ -27,6 +27,25 @@ client.on("message", msg => {
 	var server = msg.guild.id;
 	if (command === 'maddox') {
 		msg.channel.send('Lost');
+	} else if(command === 'list'){
+
+		pool.connect((err, client, release) => {
+		  if (err) {
+		    return console.error('Error acquiring client', err.stack)
+		  }
+
+		  var query = `SELECT data FROM call_lists WHERE guild = ${server} LIMIT 1`;
+		  var call_list = '';
+		  client.query(query, (err, result) => {
+		    if (err) {
+		      return console.error('Error executing query', err.stack)
+		    }
+		    for (i = 0; i < call_list.length; i++) { 
+		        console.log(call_list[i]);
+		    }
+
+		}
+
 	} else if(command === 'call'){
 
 		var reason = args.join(" ");
@@ -67,8 +86,6 @@ client.on("message", msg => {
 		            	i--;
 		            }
 		        } 
-
-
 
 				const insertText = 'UPDATE call_lists SET data = $2 WHERE guild=$1';
 				client.query(insertText, [ server, JSON.stringify(call_list)]);
