@@ -62,8 +62,7 @@ client.on("message", msg => {
 		        for (i = 0; i < call_list.length; i++) { 
 		            console.log(call_list[i]);
 		            if(call_list[i].user_id == msg.author.id){
-		            	call_list.remove(i); 
-
+		            	call_list.splice(i, 1);
 		            }
 		        } 
 
