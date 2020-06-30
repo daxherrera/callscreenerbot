@@ -59,6 +59,12 @@ client.on("message", msg => {
 		    	call_list.push(new_call);
 				console.log(call_list)  
 
+		        for (i = 0; i < call_list.length; i++) { 
+		            console.log(call_list[i]); 
+		        } 
+
+
+
 				const insertText = 'UPDATE call_lists SET data = $2 WHERE guild=$1';
 				client.query(insertText, [ server, JSON.stringify(call_list)]);
 
