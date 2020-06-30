@@ -16,6 +16,8 @@ client.on("ready", () => {
 
 })
 
+		    var nowtime = Date.toLocaleString();
+		    console.log(nowtime);
 
 
 client.on("message", msg => {
@@ -73,9 +75,8 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    var nowtime = Date.now();
-		    console.log(nowtime.toLocaleString());
-		    console.log(Date(2015,1,3,15,30).toLocaleString());
+		    var nowtime = Date.toLocaleString();
+		    console.log(nowtime);
 		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : nowtime};
 		    //console.log(new_call);
 		    console.log("result.rows");
