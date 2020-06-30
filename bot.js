@@ -74,7 +74,8 @@ client.on("message", msg => {
 		      return console.error('Error executing query', err.stack)
 		    }
 		    var nowtime = Date.now();
-		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : nowtime};
+		    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : dateFormat.format(nowtime)};
 		    //console.log(new_call);
 		    console.log("result.rows");
 		    console.log(result.rows.length);
