@@ -32,6 +32,9 @@ client.on("message", msg => {
 		msg.channel.send('Lost');
 	} else if(command === 'call'){
 
+		console.log("1234");		
+		console.log(msg.member);
+		console.log("5678");		
 		console.log(args);
 
 		pool.connect((err, client, release) => {
