@@ -106,6 +106,7 @@ client.on("message", msg => {
 				client.query(insertText, [ server, JSON.stringify(call_list)]);
 
 		    }
+			msg.channel.send("You have been queued.");
 
 
 		  }) 
