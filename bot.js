@@ -69,7 +69,7 @@ client.on("message", msg => {
 		      return console.error('Error executing query', err.stack)
 		    }
 		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason};
-		    console.log(new_call);
+		    //console.log(new_call);
 		    console.log("result.rows");
 		    console.log(result.rows.length);
 		    if(!result.rows[0]){
