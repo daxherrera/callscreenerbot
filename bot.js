@@ -90,17 +90,17 @@ client.on("message", msg => {
 		    else{
 			    call_list = result.rows[0].data;
 		    	console.log('found it');
-		    	call_list.push(new_call);
-				console.log(call_list)
 
 		        for (i = 0; i < call_list.length; i++) { 
 		            console.log(call_list[i]);
 		            if(call_list[i].user_id == msg.author.id){
 		            	console.log("found removed");
 		            	call_list.splice(i, 1);
-		            	i--;
 		            }
 		        } 
+
+		    	call_list.push(new_call);
+				console.log(call_list)
 
 				const insertText = 'UPDATE call_lists SET data = $2 WHERE guild=$1';
 				client.query(insertText, [ server, JSON.stringify(call_list)]);
