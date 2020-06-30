@@ -11,12 +11,11 @@ const pool = new Pool({
 });
 
 client.on("ready", () => {
-  console.log('ne');
   console.log(`Logged in as ${client.user.tag}!`);
 
 })
 
-		    var nowtime = new Date.toLocaleString();
+		    var nowtime = new Date(Date.now()).toLocaleString();
 		    console.log(nowtime);
 
 
