@@ -42,13 +42,16 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    if(result.rows > 0){
+		    if(result.rows.length() > 0){
 				call_list = result.rows[0].data;
 			    console.log(call_list);
 			    for (i = 0; i < call_list.length; i++) { 
 			        console.log(call_list[i]);
 					msg.channel.send(call_list[i].user_name + ": " + call_list[i].user_message);
 			    }
+			}
+			else{
+				msg.channel.send("No callers.");
 			}
 		  })
 
@@ -74,7 +77,7 @@ client.on("message", msg => {
 		    //console.log(new_call);
 		    console.log("result.rows");
 		    console.log(result.rows.length);
-		    if(!result.rows[0]){
+		    if(!result.rows.length){
 		    	console.log('none found');
 		    	call_list = [];
 		    	call_list.push(new_call);
