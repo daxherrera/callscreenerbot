@@ -44,7 +44,7 @@ client.on("message", msg => {
 			    console.log(call_list);
 			    for (i = 0; i < call_list.length; i++) { 
 			        console.log(call_list[i]);
-					msg.channel.send(call_list[i].user_name + " - " + call_list[i].user_name + ": " + call_list[i].user_message);
+					msg.channel.send(call_list[i].timestamp + " - " + call_list[i].user_name + ": " + call_list[i].user_message);
 			    }
 			}
 			else{
