@@ -27,7 +27,7 @@ client.on("message", msg => {
 	var server = msg.guild.id;
 	console.log(server);
 	console.log(msg.member.id);
-	console.log(msg.member.username);
+	console.log(msg.member.name);
 	if (command === 'maddox') {
 		msg.channel.send('Lost');
 	} else if(command === 'call'){
@@ -48,7 +48,7 @@ client.on("message", msg => {
 		    }
 		    console.log(result.rows);
 		    console.log(call_list)
-		    var new_call = {user: "test", message:"message"};
+		    var new_call = {user_name: msg.member.username, user_id: msg.member.username, user_message :"message"};
 		    console.log(new_call);
 		    if(!result.rows[0]){
 		    	console.log('none found');
