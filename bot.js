@@ -57,13 +57,14 @@ client.on("message", msg => {
 			    call_list = result.rows[0].data;
 		    	console.log('found it');
 		    	call_list.push(new_call);
-				console.log(call_list)  
+				console.log(call_list)
 
 		        for (i = 0; i < call_list.length; i++) { 
 		            console.log(call_list[i]);
 		            if(call_list[i].user_id == msg.author.id){
 		            	console.log("found removed");
 		            	call_list.splice(i, 1);
+		            	i--;
 		            }
 		        } 
 
