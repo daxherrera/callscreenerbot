@@ -29,7 +29,7 @@ client.on("message", msg => {
 		msg.channel.send('Lost');
 	} else if(command === 'call'){
 
-		var reason = const command = args.shift();
+		var reason = args.shift();
 
 		pool.connect((err, client, release) => {
 		  if (err) {
