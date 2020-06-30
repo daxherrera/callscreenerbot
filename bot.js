@@ -42,6 +42,7 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
+			call_list = result.rows[0].data;
 		    console.log(call_list);
 		    for (i = 0; i < call_list.length; i++) { 
 		        console.log(call_list[i]);
