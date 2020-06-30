@@ -9,12 +9,35 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
+
+client.on("ready", () => {
+  console.log('ne');
+  console.log(`Logged in as ${client.user.tag}!`);
+
+})
+
+
+
+client.on("message", msg => {
+	if (!msg.content.startsWith("!") || msg.author.bot) return;
+
+	const args = msg.content.slice(1).split(/ +/);
+	const command = args.shift().toLowerCase();
+
+	var server = msg.guild.id;
+	console.log(server);
+	console.log(msg.member);
+	if (command === 'maddox') {
+		msg.channel.send('Lost');
+	} else if(command === 'call'){
+
+		console.log(args);
+
 		pool.connect((err, client, release) => {
 		  if (err) {
 		    return console.error('Error acquiring client', err.stack)
 		  }
 
-		  var server = 727072362750804048;
 		  var query = `SELECT data FROM call_lists WHERE guild = ${server} LIMIT 1`;
 		  console.log(query);
 		  var call_list = '';
@@ -53,28 +76,6 @@ const pool = new Pool({
 		  release() 
 
 		}) 
-
-
-client.on("ready", () => {
-  console.log('ne');
-  console.log(`Logged in as ${client.user.tag}!`);
-
-})
-
-
-
-client.on("message", msg => {
-	if (!msg.content.startsWith("!") || msg.author.bot) return;
-
-	const args = msg.content.slice(1).split(/ +/);
-	const command = args.shift().toLowerCase();
-
-	var server = msg.guild.id;
-	console.log(server);
-	if (command === 'maddox') {
-		msg.channel.send('Lost');
-	} else if(command === 'call'){
-
 
 	}
 	// other commands...
