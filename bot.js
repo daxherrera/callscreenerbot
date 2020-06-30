@@ -73,7 +73,8 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason};
+		    var nowtime = Date.now();
+		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : nowtime};
 		    //console.log(new_call);
 		    console.log("result.rows");
 		    console.log(result.rows.length);
