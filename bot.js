@@ -45,7 +45,8 @@ client.on("message", msg => {
 				msg.channel.send(call_list[i]);
 		    }
 
-		}
+		})
+		release()
 
 	} else if(command === 'call'){
 
