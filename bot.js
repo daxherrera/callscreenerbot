@@ -27,8 +27,8 @@ client.on("message", msg => {
 	var server = msg.guild.id;
 	if (command === 'maddox') {
 		msg.channel.send('Lost');
-	} else if(command === 'callers'){
-		console.log("callers")
+	} else if(command === 'list'){
+		console.log("list")
 
 		pool.connect((err, client, release) => {
 		  if (err) {
@@ -36,11 +36,13 @@ client.on("message", msg => {
 		  }
 
 		  var query = `SELECT data FROM call_lists WHERE guild = ${server} LIMIT 1`;
+		  console.log(query);
 		  var call_list = '';
 		  client.query(query, (err, result) => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
+		    console.log(call_list);
 		    for (i = 0; i < call_list.length; i++) { 
 		        console.log(call_list[i]);
 				msg.channel.send(call_list[i]);
