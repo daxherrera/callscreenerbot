@@ -48,7 +48,7 @@ client.on("message", msg => {
 		    }
 		    console.log(result.rows);
 		    console.log(call_list)
-		    var new_call = {user_name: msg.member.username, user_id: msg.member.username, user_message :"message"};
+		    var new_call = {user_name: msg.member.name, user_id: msg.member.id, user_message :"message"};
 		    console.log(new_call);
 		    if(!result.rows[0]){
 		    	console.log('none found');
