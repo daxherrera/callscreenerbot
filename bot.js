@@ -44,7 +44,7 @@ client.on("message", msg => {
 			    console.log(call_list);
 			    for (i = 0; i < call_list.length; i++) { 
 			        console.log(call_list[i]);
-					msg.channel.send(call_list[i].user_name + ": " + call_list[i].user_message);
+					msg.channel.send(call_list[i].user_name + " - " + call_list[i].user_name + ": " + call_list[i].user_message);
 			    }
 			}
 			else{
@@ -70,7 +70,7 @@ client.on("message", msg => {
 		    if (err) {
 		      return console.error('Error executing query', err.stack)
 		    }
-		    
+
 			var nowtime = new Date(Date.now()).toLocaleString();
 		    var new_call = {user_name: msg.author.username, user_id: msg.author.id, user_message : reason, timestamp : nowtime};
 		    //console.log(new_call);
