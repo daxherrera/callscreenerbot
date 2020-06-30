@@ -27,7 +27,8 @@ client.on("message", msg => {
 	var server = msg.guild.id;
 	if (command === 'maddox') {
 		msg.channel.send('Lost');
-	} else if(command === 'list'){
+	} else if(command === 'callers'){
+		console.log("callers")
 
 		pool.connect((err, client, release) => {
 		  if (err) {
@@ -44,7 +45,7 @@ client.on("message", msg => {
 		        console.log(call_list[i]);
 				msg.channel.send(call_list[i]);
 		    }
-		})
+		  })
 
 		release()
 		})
